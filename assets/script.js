@@ -21,20 +21,20 @@ $("#citySearch").on("click", function(event) {
         console.log(response)
 
         var showIcon = "https://www.weatherbit.io/static/img/icons/" + response.data[0].weather.icon + ".png";
-        var cityName = $("#cityTitle").text(response.data[0].city_name + ", " + response.data[0].state_code);
+        var cityName = $("#cityTitle").text(response.data[0].city_name + ", " + response.data[0].state_code + " " + "(" + moment().format("MM-DD-YYYY") + ")");
             $("#currentWeather").append(cityName);
-        var cityDate = $("#cityDate").text(response.data[0].datetime);
-        $("#currentWeather").append(cityDate);
         var cityIcon = $("#cityIcon").html('<img src="' + showIcon + '"/>');
             $("#currentWeather").append(cityIcon);
         var description = $("#description").text("Conditions: " + response.data[0].weather.description)
             $("#currentWeather").append(description);
-        var temp = $("#temp").text("Temperature: " + response.data[0].temp)
+        var temp = $("#temp").text("Temperature: " + response.data[0].temp + " °F")
             $("#currentWeather").append(temp);
         
     })
     }
 
+
+    
     function forecast(city) {
         var queryURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + city + "&key=" + weatherAPI;
 
