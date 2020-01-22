@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Brewery Backpacker</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <link rel="stylesheet" href="project1.css">
-    <link rel="stylesheet" href="http://https://fonts.google.com/">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
@@ -32,12 +32,10 @@
             </h2>
             <div class="field is-grouped">
                 <p class="control is-expanded">
-                  <input class="input" type="text" placeholder="Search a city">
+                  <input class="input" type="text" id="city-input" placeholder="Search city, state">
                 </p>
                 <p class="control">
-                  <a class="button is-warning">
-                    Search
-                  </a>
+                  <a class="button is-warning" id="citySearch">Search</a>
                 </p>
               </div>
           </div>
@@ -58,14 +56,14 @@
       <div class="container">
         <div class="tile is-ancestor">
             <div class="tile is-parent">
-              <article class="tile is-child box">
+              <article class="tile is-child box breweries">
                 <p class="title">Breweries In Your City</p>
                 <div class="content">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut.</p>
                 </div>
               </article>
             </div>
-            <div class="tile is-parent is-6">
+            <div class="tile is-parent is-6 images">
               <article class="tile is-child box">
                 <p class="title">Image of city</p>
                 <div class="content">
@@ -73,11 +71,16 @@
                 </div>
               </article>
             </div>
-            <div class="tile is-parent">
+            <div class="tile is-parent weather">
               <article class="tile is-child box">
                 <p class="title">Current Weather</p>
-                <div class="content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut.</p>
+                <div class="content" id="currentWeather">
+                  <div id="cityTitle"></div>
+                  <div id="cityDate"></div>
+                  <div id="cityIcon"></div>
+                  <div id="description"></div>
+                  <div id="temp"></div>
+                  <div id="tomDescrip"></div>
                 </div>
               </article>
             </div>
@@ -98,4 +101,6 @@
   </footer>
 
 </body>
+<script src="./assets/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </html>
