@@ -4,21 +4,32 @@ $(document).ready(function(){
     var cityArr = [];
 
 
+
+// BUTTON FUNCTIONS
 // when user types a city the the weather conditions show
 $("#citySearch").on("click", function(event) {
     event.preventDefault();
     var city = $("#city-input").val().trim();
+    var state = $("#state-input").val().trim();
 
-    localWeather(city)
-    forecast(city)
+    localWeather(city, state)
+    forecast(city, state)
     saveCitySearch(city)
 })
 
+// saving to local storage 
+function saveCitySearch(city) {
+    cityArr.push(city.toLowerCase());
+    localStorage.setItem("city", JSON.stringify(cityArr));
+}
 
 
+
+
+// WEATHER APIs
 // Elements that makeup current weather conditions
-    function localWeather(city) {
-        var queryURL = "https://api.weatherbit.io/v2.0/current?city=" + city + "&key=" + weatherAPI;
+    function localWeather(city, state) {
+        var queryURL = "https://api.weatherbit.io/v2.0/current?city=" + city + "&state=" + state + "&key=" + weatherAPI;
 
     $.ajax({
         url: queryURL,
@@ -46,8 +57,8 @@ $("#citySearch").on("click", function(event) {
 
 
 // element that predicts tomorrows forecast 
-    function forecast(city) {
-        var queryURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + city + "&key=" + weatherAPI;
+    function forecast(city, state) {
+        var queryURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + city + "&state=" + state + "&key=" + weatherAPI;
 
     $.ajax({
         url: queryURL,
@@ -60,17 +71,4 @@ $("#citySearch").on("click", function(event) {
             $("#currentWeather").append(tomDescrip);
         })
     }
-
-
-    
-
-// saving to local storage 
-function saveCitySearch(city) {
-    cityArr.push(city.toLowerCase());
-    localStorage.setItem("city", JSON.stringify(cityArr));
-}
-
-
-
 })
-
