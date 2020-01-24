@@ -11,10 +11,13 @@ $("#citySearch").on("click", function(event) {
     event.preventDefault();
     var city = $("#city-input").val().trim();
     var state = $("#state-input").val().trim();
-
-    localWeather(city, state)
+    var tomDescrip = ""
+    var localDiv = $("#localDiv")
+    localWeather(city, state, localDiv)
     forecast(city, state)
     saveCitySearch(city)
+    $("currentWeather").append(localDiv)
+    $("#currentWeather").append(tomDescrip);
 })
 
 // saving to local storage 
@@ -28,7 +31,7 @@ function saveCitySearch(city) {
 
 // WEATHER APIs
 // Elements that makeup current weather conditions
-    function localWeather(city, state) {
+function localWeather(city, state, localDiv) {
         var queryURL = "https://api.weatherbit.io/v2.0/current?city=" + city + "&state=" + state + "&key=" + weatherAPI;
 
     $.ajax({
@@ -44,22 +47,22 @@ function saveCitySearch(city) {
         // rounding the temperature to get rid of decimals
         var conTemp = temperature.toFixed(0)
 
+
         var cityName = $("#cityTitle").text(response.data[0].city_name + ", " + response.data[0].state_code + " " + "(" + moment().format("MM-DD-YYYY") + ")");
-            $("#currentWeather").append(cityName);
+            localDiv.append(cityName);
         var cityIcon = $("#cityIcon").html('<img src="' + showIcon + '"/>');
-            $("#currentWeather").append(cityIcon);
+            localDiv.append(cityIcon);
         var description = $("#description").text("Conditions: " + response.data[0].weather.description)
-            $("#currentWeather").append(description);
+            localDiv.append(description);
         var temp = $("#temp").text("Temperature: " + conTemp + " °F")
-            $("#currentWeather").append(temp);  
+            localDiv.append(temp);  
         })
     }
 
 
 // element that predicts tomorrows forecast 
-    function forecast(city, state) {
+   function forecast(city, state) {
         var queryURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + city + "&state=" + state + "&key=" + weatherAPI;
-
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -67,8 +70,7 @@ function saveCitySearch(city) {
         console.log(response)
 
         // getting tomorrows weather forecast description 
-        var tomDescrip = $("#tomDescrip").text("Tomorrow's forecast: " + response.data[1].weather.description)
-            $("#currentWeather").append(tomDescrip);
+       tomDescrip = $("#tomDescrip").text("Tomorrow's forecast: " + response.data[1].weather.description)
         })
     }
 })
