@@ -14,15 +14,17 @@ $.ajax({
 console.log(queryURL);
 console.log(response);
 console.log(response.hits[0].largeImageURL)
+for(var i =0; i< 3; i++) {
 
 // Creating and storing an image tag
 var image = $("<img>");
 
 // Setting the image src attribute to largeImageUrl
-  image.attr("src", response.hits[0].largeImageURL);
+  image.attr("src", response.hits[i].largeImageURL);
   image.attr("alt", "city image");
-  $("#imageCity").empty();
+//   $("#imageCity").empty();
   $("#imageCity").prepend(image);
+}
 });
 }
 
@@ -34,7 +36,7 @@ $(".button").on("click", function(event) {
     var inputCities = $(".input").val().trim();
   // Running the searchCitiesInTown function (passing in the city as an argument)
   searchCitiesInTown(inputCities);
-
+  $("#imageCity").empty();
 });
    
 
