@@ -73,4 +73,39 @@ function localWeather(city, state, localDiv) {
        tomDescrip = $("#tomDescrip").text("Tomorrow's forecast: " + response.data[1].weather.description)
         })
     }
-})
+
+    //for loop for brewery api 
+    function breweries(city, state) {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries?by_city=" + city + "&by_state=" + state,
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "brianiswu-open-brewery-db-v1.p.rapidapi.com",
+                "x-rapidapi-key": "e302f2241bmshe7c472e9ca95ff2p148a9djsn42ee28dfae96"
+            }
+        }
+        
+        $.ajax(settings).done(function(response) { 
+            console.log(response);
+
+
+        //     for (var i = 0; i < 5; i++) {
+        //         var name = response[i].name
+        //         var type = response[i].brewery_type
+        //         var address = response[i].street + response[i].city + response[i].state
+        //         var number = response[i].phone
+        //         var body = $("<div>").html('<div class="brewBody">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
+        //         + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
+        //         + '<div id="addressBody">' + 'Address: ' + address + '</div>'
+        //         + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
+        //         + '</div>')
+        //         $("#breweryList").append(body)
+        //         // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
+        //         // $("#breweryList").append(cities)
+        
+        //     }
+        // });
+    })};
+});
