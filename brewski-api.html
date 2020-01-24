@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<h1>Breweries</h1>
+<ul id = "breweries"></ul>
+<body>
+    <script> 
+  function breweries( city, state) {}
+  
+  var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries/search?query=dog",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "brianiswu-open-brewery-db-v1.p.rapidapi.com",
+		"x-rapidapi-key": "797b7f787cmsh3c652ee319f25f9p19feb5jsn709c05bc754b"
+	}
+}
+var breweries = $('breweries')  
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+
+  for (var i = 0; i < 5; i++) {
+    var name = response[i].name
+    var type = response[i].brewery_type
+    var address = response[i].street + response[i].city + response[i].state
+    var number = response[i].phone
+            var body = $("<div>").html('<div class="brewBody">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
+            + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
+            + '<div id="addressBody">' + 'Address: ' + address + '</div>'
+            + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
+            + '</div>')
+            $("#breweryList").append(body)
+            // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
+            // $("#breweryList").append(cities)
+    
+        }
+    });
+  // $.each(response, function(i, brewery) {
+</script>
+</body>
+</html>
