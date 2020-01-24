@@ -74,7 +74,7 @@ function localWeather(city, state, localDiv) {
         })
     }
 
-    //for loop for brewery api 
+    //api for breweries
     function breweries(city, state) {
         var settings = {
             "async": true,
@@ -90,22 +90,23 @@ function localWeather(city, state, localDiv) {
         $.ajax(settings).done(function(response) { 
             console.log(response);
 
+                // for loop for breweries
 
-        //     for (var i = 0; i < 5; i++) {
-        //         var name = response[i].name
-        //         var type = response[i].brewery_type
-        //         var address = response[i].street + response[i].city + response[i].state
-        //         var number = response[i].phone
-        //         var body = $("<div>").html('<div class="brewBody">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
-        //         + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
-        //         + '<div id="addressBody">' + 'Address: ' + address + '</div>'
-        //         + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
-        //         + '</div>')
-        //         $("#breweryList").append(body)
-        //         // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
-        //         // $("#breweryList").append(cities)
+            // for (var i = 0; i < 5; i++) {
+            //     var name = response[i].name
+            //     var type = response[i].brewery_type
+            //     var address = response[i].street + response[i].city + response[i].state
+            //     var number = response[i].phone
+            //     var body = $("<div>").html('<div class="brewBody">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
+            //     + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
+            //     + '<div id="addressBody">' + 'Address: ' + address + '</div>'
+            //     + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
+            //     + '</div>')
+            //     $("#breweryList").append(body)
+            //     // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
+            //     // $("#breweryList").append(cities)
         
-        //     }
-        // });
-    })};
+            // }
+        });
+    }
 });
