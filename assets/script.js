@@ -3,7 +3,7 @@ $(document).ready(function(){
     var weatherAPI = "d6e8ffe90ebe474fa1ad37347201fc11"
     var cityArr = [];
 
-
+    
 
 // BUTTON FUNCTIONS
 // when user types a city the the weather conditions show
@@ -13,11 +13,14 @@ $("#citySearch").on("click", function(event) {
     var state = $("#state-input").val().trim();
     var tomDescrip = ""
     var localDiv = $("#localDiv")
+
+    
     localWeather(city, state, localDiv)
     forecast(city, state)
     saveCitySearch(city)
-    $("currentWeather").append(localDiv)
+    $("#currentWeather").append(localDiv)
     $("#currentWeather").append(tomDescrip);
+    breweries(city, state)
 })
 
 // saving to local storage 
@@ -73,4 +76,45 @@ function localWeather(city, state, localDiv) {
        tomDescrip = $("#tomDescrip").text("Tomorrow's forecast: " + response.data[1].weather.description)
         })
     }
-})
+
+
+
+    //api for breweries
+    function breweries(city, state) {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries?by_city=" + city + "&by_state=" + state,
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "brianiswu-open-brewery-db-v1.p.rapidapi.com",
+                "x-rapidapi-key": "e302f2241bmshe7c472e9ca95ff2p148a9djsn42ee28dfae96"
+            }
+        }
+        
+        $.ajax(settings).done(function(response) { 
+            console.log(response);
+                // div class for breweries is article
+                // p tag for content.
+                // $.each(response, function(i, brewery) {
+                //     $response.append('<li>'+ brewery +'</li>')
+                //     $("brewery").slice(0,4).hide;
+                // })
+            
+            // for loop for breweries
+            for (var i = 0; i < 5; i++) {
+                var name = response[i].name
+                var type = response[i].brewery_type
+                var address = response[i].street + response[i].city + response[i].state
+                var number = response[i].phone
+                var body = $("<div>").html('<div class="brewBody">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
+                + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
+                + '<div id="addressBody">' + 'Address: ' + address + '</div>'
+                + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
+                + '</div>')
+                $("#breweryList").append(body)
+                // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
+                // $("#breweryList").append(cities)
+        
+            }
+})}})
