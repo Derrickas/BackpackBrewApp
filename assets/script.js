@@ -17,7 +17,8 @@ $("#citySearch").on("click", function(event) {
     forecast(city, state)
     saveCitySearch(city)
     $("currentWeather").append(localDiv)
-    $("#currentWeather").append(tomDescrip);
+    $("#currentWeather").append(tomDescrip)
+    breweries(city, state);
 })
 
 // saving to local storage 
@@ -76,7 +77,7 @@ function localWeather(city, state, localDiv) {
 
     //api for breweries
     function breweries(city, state) {
-        var response = $('brewdata')
+        // var response = $('brewdata')
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -95,30 +96,24 @@ function localWeather(city, state, localDiv) {
                 // div class for breweries is article
                 // p tag for content.
 
-                $.each(response, function(i, brewery) {
-                    $response.append('<li>'+ brewery +'</li>')
-                    $("brewery").slice(0,4).hide;
-                })
-            
-            
-            
-            
+                // $.each(response, function(i, brewery) {
+                //     $response.append('<li>'+ brewery +'</li>')
+                //     $("brewery").slice(0,4).hide;
+                // })
             
             // for loop for breweries
 
-            // for (var i = 0; i < 5; i++) {
-            //     var name = response[i].name
-            //     var type = response[i].brewery_type
-            //     var address = response[i].street + response[i].city + response[i].state
-            //     var number = response[i].phone
-            //     var body = $("<div>").html('<div class="brewBody">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
-            //     + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
-            //     + '<div id="addressBody">' + 'Address: ' + address + '</div>'
-            //     + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
-            //     + '</div>')
-            //     $("#breweryList").append(body)
-                // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
-                // $("#breweryList").append(cities)
+            for (var i = 0; i < 5; i++) {
+                var name = response[i].name
+                var type = response[i].brewery_type
+                var address = response[i].street + response[i].city + response[i].state
+                var number = response[i].phone
+                var body = $("<div>").html('<div class="brewBody">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
+                + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
+                + '<div id="addressBody">' + 'Address: ' + address + '</div>'
+                + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
+                + '</div>')
+                $("#breweryList").append(body)
         
             }
         });
