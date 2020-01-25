@@ -76,6 +76,7 @@ function localWeather(city, state, localDiv) {
 
     //api for breweries
     function breweries(city, state) {
+        var response = $('brewdata')
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -87,10 +88,23 @@ function localWeather(city, state, localDiv) {
             }
         }
         
+
         $.ajax(settings).done(function(response) { 
             console.log(response);
 
-                // for loop for breweries
+                // div class for breweries is article
+                // p tag for content.
+
+                $.each(response, function(i, brewery) {
+                    $response.append('<li>'+ brewery +'</li>')
+                    $("brewery").slice(0,4).hide;
+                })
+            
+            
+            
+            
+            
+            // for loop for breweries
 
             // for (var i = 0; i < 5; i++) {
             //     var name = response[i].name
@@ -103,10 +117,10 @@ function localWeather(city, state, localDiv) {
             //     + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
             //     + '</div>')
             //     $("#breweryList").append(body)
-            //     // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
-            //     // $("#breweryList").append(cities)
+                // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
+                // $("#breweryList").append(cities)
         
-            // }
+            }
         });
     }
 });
