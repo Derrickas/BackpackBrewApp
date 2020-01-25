@@ -3,7 +3,7 @@ $(document).ready(function(){
     var weatherAPI = "d6e8ffe90ebe474fa1ad37347201fc11"
     var cityArr = [];
 
-
+    
 
 // BUTTON FUNCTIONS
 // when user types a city the the weather conditions show
@@ -13,12 +13,14 @@ $("#citySearch").on("click", function(event) {
     var state = $("#state-input").val().trim();
     var tomDescrip = ""
     var localDiv = $("#localDiv")
+
+    
     localWeather(city, state, localDiv)
     forecast(city, state)
     saveCitySearch(city)
-    $("currentWeather").append(localDiv)
-    $("#currentWeather").append(tomDescrip)
-    breweries(city, state);
+    $("#currentWeather").append(localDiv)
+    $("#currentWeather").append(tomDescrip);
+    breweries(city, state)
 })
 
 // saving to local storage 
@@ -75,9 +77,10 @@ function localWeather(city, state, localDiv) {
         })
     }
 
+
+
     //api for breweries
     function breweries(city, state) {
-        // var response = $('brewdata')
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -89,20 +92,16 @@ function localWeather(city, state, localDiv) {
             }
         }
         
-
         $.ajax(settings).done(function(response) { 
             console.log(response);
-
                 // div class for breweries is article
                 // p tag for content.
-
                 // $.each(response, function(i, brewery) {
                 //     $response.append('<li>'+ brewery +'</li>')
                 //     $("brewery").slice(0,4).hide;
                 // })
             
             // for loop for breweries
-
             for (var i = 0; i < 5; i++) {
                 var name = response[i].name
                 var type = response[i].brewery_type
@@ -114,8 +113,8 @@ function localWeather(city, state, localDiv) {
                 + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
                 + '</div>')
                 $("#breweryList").append(body)
+                // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
+                // $("#breweryList").append(cities)
         
             }
-        });
-    }
-});
+})}})
