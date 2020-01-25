@@ -117,5 +117,8 @@ function localWeather(city, state, localDiv) {
         
             }
         });
+            
+        $("#breweryList").empty()
     }
+
 });
