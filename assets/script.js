@@ -67,6 +67,8 @@ function localWeather(city, state, localDiv) {
     }
 
 
+
+
 // element that predicts tomorrows forecast 
    function forecast(city, state) {
         var queryURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + city + "&state=" + state + "&key=" + weatherAPI;
@@ -78,12 +80,12 @@ function localWeather(city, state, localDiv) {
 
         // getting tomorrows weather forecast description 
        tomDescrip = $("#tomDescrip").text("Tomorrow's forecast: " + response.data[1].weather.description)
-        })
-    }
+    })
+}
 
 
 
-
+// pixabay api for images
 function searchCitiesInTown(city) {
     var API_KEY = '14992449-1f5a79fc7605f2a9694e87a5b';
     
@@ -91,25 +93,25 @@ function searchCitiesInTown(city) {
 
 
 // Perfoming an AJAX GET request to our queryURL
-$.ajax({
-    url: queryURL,
-    method: "GET"
-        })
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+            })
 
-    .then(function(response) {
-console.log(queryURL);
-console.log(response);
+        .then(function(response) {
+    console.log(queryURL);
+    console.log(response);
 
-for(var i=0; i<3; i++) {
-// Creating and storing an image tag
-var image = $("<img>");
+    for(var i=0; i<3; i++) {
+    // Creating and storing an image tag
+    var image = $("<img>");
 
-// Setting the image src attribute to largeImageUrl
-  image.attr("src", response.hits[i].largeImageURL);
-  image.attr("alt", "city image");
-  // $("#imageCity").empty();
-  $("#imageCity").prepend(image);
-}
+    // Setting the image src attribute to largeImageUrl
+    image.attr("src", response.hits[i].largeImageURL);
+    image.attr("alt", "city image");
+    // $("#imageCity").empty();
+    $("#imageCity").prepend(image);
+    }
 });
 }
 
@@ -118,7 +120,7 @@ var image = $("<img>");
 
 
 
-//api for breweries
+//open brwery api for breweries
 function breweries(city, state) {
     var settings = {
         "async": true,
@@ -128,8 +130,8 @@ function breweries(city, state) {
         "headers": {
             "x-rapidapi-host": "brianiswu-open-brewery-db-v1.p.rapidapi.com",
             "x-rapidapi-key": "e302f2241bmshe7c472e9ca95ff2p148a9djsn42ee28dfae96"
+            }
         }
-    }
     
     $.ajax(settings).done(function(response) { 
         console.log(response);
@@ -146,12 +148,12 @@ function breweries(city, state) {
             var body = $("<div id='brewbox'>").html('<article class="tile is-child notification is-warning">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
             + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
             + '<div id="addressBody">' + 'Address: ' + address + '</div>'
-            + '<div id="numberBody">' + 'Phone Number: ' + formattedPhone + '</div> <br> <br>'
+            + '<div id="numberBody">' + 'Phone Number: ' + formattedPhone + '</div>'
             + '</article>')
             $("#breweryList").append(body)
-
         }
 
+// reformat phone numbers from api
         function formatPhone(phonenum) {
             var regexObj = /^(?:\+?1[-. ]?)?(?:\(?([0-9]{3})\)?[-. ]?)?([0-9]{3})[-. ]?([0-9]{4})$/;
             if (regexObj.test(phonenum)) {
@@ -166,8 +168,9 @@ function breweries(city, state) {
                 return phonenum;
             }
         }
+    }
+
+)}
 
 
-})};
-
-})
+});
