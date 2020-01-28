@@ -19,3 +19,28 @@ h6 {
     text-decoration: underline;
     
 }
+
+video {
+    max-width: none !important;
+}
+
+.brewTitle {
+    padding-bottom: 25px;
+}
+
+#brewbox {
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+#currentWeather {
+    text-align: center;
+}
+
+#cityTitle {
+    font-weight: bold;
+}
+
+#cityDate {
+    font-weight: bold;
+}

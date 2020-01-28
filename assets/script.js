@@ -143,11 +143,11 @@ function breweries(city, state) {
             var number = response[i].phone
             var formattedPhone = formatPhone(number)
 
-            var body = $("<div>").html('<div class="brewBody">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
+            var body = $("<div id='brewbox'>").html('<article class="tile is-child notification is-warning">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
             + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
             + '<div id="addressBody">' + 'Address: ' + address + '</div>'
             + '<div id="numberBody">' + 'Phone Number: ' + formattedPhone + '</div> <br> <br>'
-            + '</div>')
+            + '</article>')
             $("#breweryList").append(body)
 
         }
