@@ -11,7 +11,6 @@ $("#citySearch").on("click", function(event) {
     event.preventDefault();
     var city = $("#city-input").val().trim();
     var state = $("#state-input").val().trim();
-    // var inputCities = $(".input").val().trim();
     var tomDescrip = ""
     var localDiv = $("#localDiv")
 
@@ -121,12 +120,13 @@ function searchCitiesInTown(city) {
 
 
 
+
 //open brwery api for breweries
 function breweries(city, state) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries?by_city=" + city + "&by_state=" + state,
+        "url": "https://api.openbrewerydb.org/breweries?by_city=" + city + "&by_state=" + state,
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "brianiswu-open-brewery-db-v1.p.rapidapi.com",
@@ -146,10 +146,10 @@ function breweries(city, state) {
             var number = response[i].phone
             var formattedPhone = formatPhone(number)
 
-            var body = $("<div id='brewbox'>").html('<article class="tile is-child notification is-warning">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
-            + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
-            + '<div id="addressBody">' + 'Address: ' + address + '</div>'
-            + '<div id="numberBody">' + 'Phone Number: ' + formattedPhone + '</div>'
+            var body = $("<div id='brewbox'>").html('<article class="tile is-child notification is-warning">' + '<h6 id="namesBody">' + '<strong>Brewery: </strong>' + name + '</h6>'
+            + '<div id="typeBody">' + '<strong>Type of Brewery: </strong>' + type + '</div>'
+            + '<div id="addressBody">' + '<strong>Address: </strong>' + address + '</div>'
+            + '<div id="numberBody">' + '<strong>Phone Number: </strong>' + formattedPhone + '</div>'
             + '</article>')
             $("#breweryList").append(body)
         }
@@ -169,9 +169,10 @@ function breweries(city, state) {
                 return phonenum;
             }
         }
-        }
+    }
 
 )}
+
 
 
 });
