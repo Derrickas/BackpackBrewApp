@@ -5,12 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Brewery Backpacker</title>
+    <!-- bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- fontawesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- css -->
     <link rel="stylesheet" href="assets/style.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Contrail+One&display=swap" rel="stylesheet">
+    
 </head>
+
+
 
 <!-- starting site -->
 <body>
@@ -18,9 +28,10 @@
         <!-- Hero content: will be in the middle -->
         <div class="hero-body" data-vide-bg="mp4:./assets/beerBubbles.mp4">
           <div class="container has-text-centered titles">
-            <h1 class="mainTitle">
-              BREWERY BACKPACKER
-            </h1>
+            <div id="typed-strings">
+              <p class="mainTitle">Brewery Backpacker</p>
+             </div>
+              <span class="mainTitle" id="typed"></span>
             <h2 class="subtitle">
               Designed for the people who travel often but can't live without a brewski. 
             </h2>
@@ -43,22 +54,24 @@
         </div>
       </section>
 
-
+<!-- api content  -->
   <section class="hero is-warning is-medium">
     <div class="hero-body"> 
       <div class="container">
         <div class="tile is-ancestor">
+          <!-- brewery tile -->
           <div class="tile is-parent">
             <article class="tile is-child box">
-              <p class="title brewTitle">Breweries In Your City</p>
+              <p class="title tileTitles">Breweries In Your City</p>
               <div class="content" id="breweryList">
               </div>
             </article>
           </div>
+          <!-- weather tile -->
           <div class="tile is-vertical is-parent weather">
             <article class="tile is-child box">
-              <p class="title">Current Weather</p>
-              <div class="content" id="currentWeather">
+              <p class="title tileTitles" id="weatherTitle">Current Weather</p>
+              <div class="content is-centered" id="currentWeather">
                 <div id="cityTitle"></div>
                 <div id="cityDate"></div>
                 <div id="cityIcon"></div>
@@ -67,8 +80,8 @@
                 <div id="tomDescrip"></div>
               </div>
             </article>
+            <!-- images tile -->
             <article class="tile is-child box images">
-              <p class="title">Image of city</p>
               <div id ="imageCity" class="content">
                 <img>
               </div>
@@ -77,14 +90,11 @@
           </div>
         </h2>
       </div> 
-
-
-
     </div>
   </section>
 
 
-
+<!-- footer -->
 <footer class="footer">
     <div class="content has-text-centered">
       <p>
@@ -93,8 +103,25 @@
     </div>
   </footer>
 
-</body>
+
+
+
+<!-- typed.js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+<!-- main js -->
 <script src="./assets/script.js"></script>
+<!-- vide.js -->
 <script src="./assets/jquery.vide.js"></script>
+<!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- typing main title w/ typed.js -->
+<script>
+var typed = new Typed('#typed',{
+                    stringsElement: '#typed-strings',
+                    backSpeed: 10,
+                    typeSpeed: 100
+                  });
+</script>
+</body>
 </html>

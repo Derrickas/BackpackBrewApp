@@ -1,8 +1,11 @@
+/* section 1 style */
 .mainTitle {
     color: white;
     font-stretch: expanded;
     font-size: -webkit-xxx-large;
     font-weight: 900;
+    font-family: 'Contrail One', cursive;
+    font-size: 70px;
 }
 
 .subtitle {
@@ -15,17 +18,19 @@
     color: white;
 }
 
-h6 {
-    text-decoration: underline;
-    
-}
-
 video {
     max-width: none !important;
 }
 
+
+/* brewery api styles */
 .brewTitle {
     padding-bottom: 25px;
+}
+
+h6 {
+    text-decoration: underline;
+    
 }
 
 #brewbox {
@@ -33,8 +38,23 @@ video {
     margin-bottom: 45px;
 }
 
+#typeBody {
+    line-height: 50px;
+}
+
+#addressBody{
+    line-height: 50px;
+}
+
+#numberBody{
+    line-height: 50px;
+}
+
+
+/* weather api styles */
 #currentWeather {
     text-align: center;
+    padding-bottom: 25px;
 }
 
 #cityTitle {
@@ -43,4 +63,12 @@ video {
 
 #cityDate {
     font-weight: bold;
+}
+
+.tileTitles {
+    font-family: 'Contrail One', cursive;
+}
+
+#weatherTitle {
+    padding-bottom: 25px;
 }
