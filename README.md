@@ -16,6 +16,7 @@ Our site was created for a frequent traveler who enjoys learning and trying loca
 
 * Use at least one new third-party API: ✓
     * <b> Vide: https://vodkabears.github.io/vide/ </b>
+    * <b> Typed.js: https://github.com/mattboldt/typed.js/ </b>
 
 * Must have a polished UI ✓
 
