@@ -1,0 +1,21 @@
+.mainTitle {
+    color: white;
+    font-stretch: expanded;
+    font-size: -webkit-xxx-large;
+    font-weight: 900;
+}
+
+.subtitle {
+    color: white;
+    font-style: italic;
+    
+}
+
+.inputText {
+    color: white;
+}
+
+h6 {
+    text-decoration: underline;
+    
+}

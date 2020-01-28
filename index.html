@@ -14,7 +14,7 @@
 
 <!-- starting site -->
 <body>
-    <section class="hero is-dark is-fullheight">
+    <section class="hero is-fullheight" data-vide-bg="mp4:./assets/beerBubbles.mp4">
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
           <header class="navbar">
@@ -25,20 +25,20 @@
       
         <!-- Hero content: will be in the middle -->
         <div class="hero-body">
-          <div class="container has-text-centered">
-            <h1 class="title">
-              Brewery Backpacker
+          <div class="container has-text-centered titles">
+            <h1 class="mainTitle">
+              BREWERY BACKPACKER
             </h1>
             <h2 class="subtitle">
               Designed for the people who travel often but can't live without a brewski. 
             </h2>
               <div class="field column is-three-fifths is-offset-one-fifth">
-                <p class="control">City:
+                <p class="control inputText">City:
                   <input class="input" type="city" id="city-input" placeholder="ex: Kansas City">
                 </p>
               </div>
               <div class="field column is-three-fifths is-offset-one-fifth">
-                <p class="control">State:
+                <p class="control inputText">State:
                   <input class="input" type="state" id="state-input" placeholder="ex: Missouri">
                 </p>
               </div>
@@ -60,8 +60,8 @@
       </section>
 
 
-<section class="hero is-warning is-medium">
-    <div class="hero-body">
+  <section class="hero is-warning is-medium">
+    <div class="hero-body"> 
       <div class="container">
         <div class="tile is-ancestor">
             <div class="tile is-parent">
@@ -75,6 +75,7 @@
               <article class="tile is-child box">
                 <p class="title">Image of city</p>
                 <div id ="imageCity" class="content">
+
                   <img>
                 </div>
               </article>
@@ -94,7 +95,10 @@
             </div>
           </div>
         </h2>
-      </div>
+      </div> 
+
+
+
     </div>
   </section>
 
@@ -110,5 +114,6 @@
 
 </body>
 <script src="./assets/script.js"></script>
+<script src="./assets/jquery.vide.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </html>
