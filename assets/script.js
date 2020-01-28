@@ -11,7 +11,7 @@ $("#citySearch").on("click", function(event) {
     event.preventDefault();
     var city = $("#city-input").val().trim();
     var state = $("#state-input").val().trim();
-    var inputCities = $(".input").val().trim();
+    // var inputCities = $(".input").val().trim();
     var tomDescrip = ""
     var localDiv = $("#localDiv")
 
@@ -22,7 +22,7 @@ $("#citySearch").on("click", function(event) {
     $("#currentWeather").append(localDiv)
     $("#currentWeather").append(tomDescrip);
     breweries(city, state)
-    searchCitiesInTown(inputCities);
+    searchCitiesInTown(city);
     $("#imageCity").empty();
     $("#breweryList").empty();
 })
@@ -66,9 +66,6 @@ function localWeather(city, state, localDiv) {
         })
     }
 
-
-
-
 // element that predicts tomorrows forecast 
    function forecast(city, state) {
         var queryURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + city + "&state=" + state + "&key=" + weatherAPI;
@@ -85,11 +82,15 @@ function localWeather(city, state, localDiv) {
 
 
 
+
+
+
+
 // pixabay api for images
 function searchCitiesInTown(city) {
     var API_KEY = '14992449-1f5a79fc7605f2a9694e87a5b';
     
-    var queryURL = "https://pixabay.com/api/?key="+ API_KEY +"&q="+ city;
+    var queryURL = "https://pixabay.com/api/?key="+ API_KEY + "&category=places" + "&image_type=photo" + "&q=" + city;
 
 
 // Perfoming an AJAX GET request to our queryURL
@@ -104,7 +105,7 @@ function searchCitiesInTown(city) {
 
     for(var i=0; i<3; i++) {
     // Creating and storing an image tag
-    var image = $("<img>");
+    var image = $("<img>").css({'width' : '700px' , 'height' : '400px'});
 
     // Setting the image src attribute to largeImageUrl
     image.attr("src", response.hits[i].largeImageURL);
@@ -133,10 +134,10 @@ function breweries(city, state) {
             }
         }
     
-    $.ajax(settings).done(function(response) { 
+        $.ajax(settings).done(function(response) { 
         console.log(response);
 
-        
+
         // for loop for breweries
         for (var i = 0; i < 5; i++) {
             var name = response[i].name
@@ -153,7 +154,7 @@ function breweries(city, state) {
             $("#breweryList").append(body)
         }
 
-// reformat phone numbers from api
+        // reformat phone numbers from api
         function formatPhone(phonenum) {
             var regexObj = /^(?:\+?1[-. ]?)?(?:\(?([0-9]{3})\)?[-. ]?)?([0-9]{3})[-. ]?([0-9]{4})$/;
             if (regexObj.test(phonenum)) {
@@ -168,7 +169,7 @@ function breweries(city, state) {
                 return phonenum;
             }
         }
-    }
+        }
 
 )}
 
