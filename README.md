@@ -9,7 +9,8 @@ Our site was created for a frequent traveler who enjoys learning and trying loca
     * Pixabay: https://pixabay.com/service/about/api/
     </b>
 
-* Must use a CSS framework _other than_ Bootstrap: <b> Bulma.io </b> ✓
+* Must use a CSS framework _other than_ Bootstrap: ✓
+    * <b> Bulma: https://bulma.io/ </b>
 
 * Must be interactive (i.e: accept and respond to user input) ✓
 
