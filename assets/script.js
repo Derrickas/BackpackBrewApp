@@ -11,6 +11,7 @@ $("#citySearch").on("click", function(event) {
     event.preventDefault();
     var city = $("#city-input").val().trim();
     var state = $("#state-input").val().trim();
+    var inputCities = $(".input").val().trim();
     var tomDescrip = ""
     var localDiv = $("#localDiv")
 
@@ -21,6 +22,9 @@ $("#citySearch").on("click", function(event) {
     $("#currentWeather").append(localDiv)
     $("#currentWeather").append(tomDescrip);
     breweries(city, state)
+    searchCitiesInTown(inputCities);
+    $("#imageCity").empty();
+    $("#breweryList").empty();
 })
 
 // saving to local storage 
@@ -76,7 +80,10 @@ function localWeather(city, state, localDiv) {
        tomDescrip = $("#tomDescrip").text("Tomorrow's forecast: " + response.data[1].weather.description)
         })
     }
-})
+
+
+
+
 function searchCitiesInTown(city) {
     var API_KEY = '14992449-1f5a79fc7605f2a9694e87a5b';
     
@@ -106,56 +113,61 @@ var image = $("<img>");
 });
 }
 
-// Event listener for our button
-$(".button").on("click", function(event) {
-    // Preventing the button from trying to submit the form
-     event.preventDefault();
-    // Storing the city name
-    var inputCities = $(".input").val().trim();
-  // Running the searchCitiesInTown function (passing in the city as an argument)
-  searchCitiesInTown(inputCities);
-  $("#imageCity").empty();
-});
 
 
 
 
-    //api for breweries
-    function breweries(city, state) {
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries?by_city=" + city + "&by_state=" + state,
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "brianiswu-open-brewery-db-v1.p.rapidapi.com",
-                "x-rapidapi-key": "e302f2241bmshe7c472e9ca95ff2p148a9djsn42ee28dfae96"
+
+//api for breweries
+function breweries(city, state) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries?by_city=" + city + "&by_state=" + state,
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "brianiswu-open-brewery-db-v1.p.rapidapi.com",
+            "x-rapidapi-key": "e302f2241bmshe7c472e9ca95ff2p148a9djsn42ee28dfae96"
+        }
+    }
+    
+    $.ajax(settings).done(function(response) { 
+        console.log(response);
+
+        
+        // for loop for breweries
+        for (var i = 0; i < 5; i++) {
+            var name = response[i].name
+            var type = response[i].brewery_type
+            var address = response[i].street + " " + response[i].city + ", " + response[i].state
+            var number = response[i].phone
+            var formattedPhone = formatPhone(number)
+
+            var body = $("<div>").html('<div class="brewBody">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
+            + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
+            + '<div id="addressBody">' + 'Address: ' + address + '</div>'
+            + '<div id="numberBody">' + 'Phone Number: ' + formattedPhone + '</div> <br> <br>'
+            + '</div>')
+            $("#breweryList").append(body)
+
+        }
+
+        function formatPhone(phonenum) {
+            var regexObj = /^(?:\+?1[-. ]?)?(?:\(?([0-9]{3})\)?[-. ]?)?([0-9]{3})[-. ]?([0-9]{4})$/;
+            if (regexObj.test(phonenum)) {
+                var parts = phonenum.match(regexObj);
+                var phone = "";
+                if (parts[1]) { phone += "+1 (" + parts[1] + ") "; }
+                phone += parts[2] + "-" + parts[3];
+                return phone;
+            }
+            else {
+                //invalid phone number
+                return phonenum;
             }
         }
-        
-        $.ajax(settings).done(function(response) { 
-            console.log(response);
-                // div class for breweries is article
-                // p tag for content.
-                // $.each(response, function(i, brewery) {
-                //     $response.append('<li>'+ brewery +'</li>')
-                //     $("brewery").slice(0,4).hide;
-                // })
-            
-            // for loop for breweries
-            for (var i = 0; i < 5; i++) {
-                var name = response[i].name
-                var type = response[i].brewery_type
-                var address = response[i].street + response[i].city + response[i].state
-                var number = response[i].phone
-                var body = $("<div>").html('<div class="brewBody">' + '<h6 id="namesBody">' + 'Brewery: ' + name + '</h6>'
-                + '<div id="typeBody">' + 'Type of Brewery: ' + type + '</div>'
-                + '<div id="addressBody">' + 'Address: ' + address + '</div>'
-                + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
-                + '</div>')
-                $("#breweryList").append(body)
-                // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
-                // $("#breweryList").append(cities)
-        
-            }
+
+
 })};
+
+})
