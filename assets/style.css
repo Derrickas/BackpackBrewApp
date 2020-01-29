@@ -1,4 +1,9 @@
 /* section 1 style */
+html {
+    scroll-behavior: smooth;
+   }
+
+   
 .mainTitle {
     color: white;
     font-stretch: expanded;

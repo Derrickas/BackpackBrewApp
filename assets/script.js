@@ -13,7 +13,8 @@ $("#citySearch").on("click", function(event) {
     var state = $("#state-input").val().trim();
     var tomDescrip = ""
     var localDiv = $("#localDiv")
-
+    window.scrollTo(0,document.body.scrollHeight);
+    
     
     localWeather(city, state, localDiv)
     forecast(city, state)
