@@ -42,8 +42,7 @@ $("#state-input").keypress(function(event) {
         .trim();
       var tomDescrip = "";
       var localDiv = $("#localDiv");
-      $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top }, 500);
-    
+      window.scrollTo(0, document.body.scrollHeight);
 
       if (event.which == 13) {
         localWeather(city, state, localDiv);
