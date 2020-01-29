@@ -137,16 +137,20 @@ function breweries(city, state) {
         $.ajax(settings).done(function(response) { 
         console.log(response);
 
-
+            if (response.length === 0) {
+                return
+            }
         // for loop for breweries
         for (var i = 0; i < 5; i++) {
-            var name = response[i].name
+            console.log(i, response.length, response[i])
+            var brewName = response[i].name
             var type = response[i].brewery_type
             var address = response[i].street + " " + response[i].city + ", " + response[i].state
             var number = response[i].phone
             var formattedPhone = formatPhone(number)
 
-            var body = $("<div id='brewbox'>").html('<article class="tile is-child notification is-warning">' + '<h6 id="namesBody">' + '<strong>Brewery: </strong>' + name + '</h6>'
+            var body = $("<div id='brewbox'>").html('<article class="tile is-child notification is-warning">' + '<h6 id="namesBody">' 
+            + '<strong>Brewery: </strong>' + brewName + '</h6>'
             + '<div id="typeBody">' + '<strong>Type of Brewery: </strong>' + type + '</div>'
             + '<div id="addressBody">' + '<strong>Address: </strong>' + address + '</div>'
             + '<div id="numberBody">' + '<strong>Phone Number: </strong>' + formattedPhone + '</div>'
