@@ -182,4 +182,3 @@ function breweries(city, state) {
 
 
 });
->>>>>>> master
