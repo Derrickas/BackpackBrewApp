@@ -172,9 +172,8 @@ function breweries(city, state) {
                 //invalid phone number
                 return phonenum;
             }
-})};
-=======
         }
+<<<<<<< HEAD
     }
 
 )}
@@ -182,3 +181,7 @@ function breweries(city, state) {
 
 
 });
+=======
+    })
+}})
+>>>>>>> master
