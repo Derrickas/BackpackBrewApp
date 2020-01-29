@@ -1,2 +1,2 @@
 # ProjectOne
-book you fantasy trip with our new  Application.
+navigate thorugh local bars, breweries, and pubs!

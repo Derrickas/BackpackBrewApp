@@ -3,7 +3,7 @@ $(document).ready(function(){
     var weatherAPI = "d6e8ffe90ebe474fa1ad37347201fc11"
     var cityArr = [];
 
-    
+
 
 // BUTTON FUNCTIONS
 // when user types a city the the weather conditions show
@@ -13,14 +13,12 @@ $("#citySearch").on("click", function(event) {
     var state = $("#state-input").val().trim();
     var tomDescrip = ""
     var localDiv = $("#localDiv")
-
-    
     localWeather(city, state, localDiv)
     forecast(city, state)
     saveCitySearch(city)
-    $("#currentWeather").append(localDiv)
-    $("#currentWeather").append(tomDescrip);
-    breweries(city, state)
+    $("currentWeather").append(localDiv)
+    $("#currentWeather").append(tomDescrip)
+    breweries(city, state);
 })
 
 // saving to local storage 
@@ -76,52 +74,10 @@ function localWeather(city, state, localDiv) {
        tomDescrip = $("#tomDescrip").text("Tomorrow's forecast: " + response.data[1].weather.description)
         })
     }
-})
-function searchCitiesInTown(city) {
-    var API_KEY = '14992449-1f5a79fc7605f2a9694e87a5b';
-    
-    var queryURL = "https://pixabay.com/api/?key="+ API_KEY +"&q="+ city;
-
-
-// Perfoming an AJAX GET request to our queryURL
-$.ajax({
-    url: queryURL,
-    method: "GET"
-        })
-
-    .then(function(response) {
-console.log(queryURL);
-console.log(response);
-
-for(var i=0; i<3; i++) {
-// Creating and storing an image tag
-var image = $("<img>");
-
-// Setting the image src attribute to largeImageUrl
-  image.attr("src", response.hits[i].largeImageURL);
-  image.attr("alt", "city image");
-  // $("#imageCity").empty();
-  $("#imageCity").prepend(image);
-}
-});
-}
-
-// Event listener for our button
-$(".button").on("click", function(event) {
-    // Preventing the button from trying to submit the form
-     event.preventDefault();
-    // Storing the city name
-    var inputCities = $(".input").val().trim();
-  // Running the searchCitiesInTown function (passing in the city as an argument)
-  searchCitiesInTown(inputCities);
-  $("#imageCity").empty();
-});
-
-
-
 
     //api for breweries
     function breweries(city, state) {
+        // var response = $('brewdata')
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -133,16 +89,20 @@ $(".button").on("click", function(event) {
             }
         }
         
+
         $.ajax(settings).done(function(response) { 
             console.log(response);
+
                 // div class for breweries is article
                 // p tag for content.
+
                 // $.each(response, function(i, brewery) {
                 //     $response.append('<li>'+ brewery +'</li>')
                 //     $("brewery").slice(0,4).hide;
                 // })
             
             // for loop for breweries
+
             for (var i = 0; i < 5; i++) {
                 var name = response[i].name
                 var type = response[i].brewery_type
@@ -154,17 +114,10 @@ $(".button").on("click", function(event) {
                 + '<div id="numberBody">' + 'Phone Number: ' + number + '</div>'
                 + '</div>')
                 $("#breweryList").append(body)
-                // var cities = $("<div>").text(response.slice(0, 5).map(brewery => brewery.name))
-                // $("#breweryList").append(cities)
         
             }
-<<<<<<< HEAD
-        });
-            
+        });    
         $("#breweryList").empty()
     }
 
 });
-=======
-})};
->>>>>>> master
