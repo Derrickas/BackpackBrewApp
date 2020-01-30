@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+    
+
+
+   
+   
+   
     var weatherAPI = "d6e8ffe90ebe474fa1ad37347201fc11"
     var cityArr = [];
 
@@ -13,6 +19,7 @@ $("#citySearch").on("click", function(event) {
     var state = $("#state-input").val().trim();
     var tomDescrip = ""
     var localDiv = $("#localDiv")
+    
 
     $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top }, 500);
     
@@ -27,6 +34,21 @@ $("#citySearch").on("click", function(event) {
     searchCitiesInTown(city);
     $("#imageCity").empty();
     $("#breweryList").empty();
+<<<<<<< HEAD
+    
+})
+
+// // smooth scroll 
+    // const scroll = new SmoothScroll('#citySearch a[href*="#"]')
+// $('#citySearch').click(function() {
+// $.scrollTop(500);
+// })
+$("button").click(function() {
+    $('html,body').animate({
+        scrollTop: $(".second").offset().top},1250);
+}
+)
+=======
 
 })
 
@@ -60,6 +82,7 @@ $("#state-input").keypress(function(event) {
 
 
 
+>>>>>>> master
 
 
 // saving to local storage 
@@ -210,4 +233,9 @@ function breweries(city, state) {
             }
         }
     })
-}})
+
+       
+    
+}
+        
+})
