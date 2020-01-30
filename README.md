@@ -27,19 +27,10 @@ Our site was created for a frequent traveler who enjoys learning and trying loca
 * Must be deployed to GitHub Pages ✓
 
 
-## Presentation Requirements
+## Presentation 
 
-* Elevator pitch: a one minute description of your application
-
-* Concept: What is your user story? What was your motivation for development?
-
-* Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
-
-* Demo: Show our site!
-
-* Directions for Future Development
-
-* Links to the deployed application and the GitHub repository
+Presentation: https://docs.google.com/presentation/d/1a9onFeRlSMJT4TShh-yef9lyB0RNzXJzbMJdEHWNHG4/edit?usp=sharing
+Site: https://derrickas.github.io/ProjectOne/
 
 
 ## Grading Metrics 
