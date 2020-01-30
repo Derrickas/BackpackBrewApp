@@ -1,11 +1,5 @@
 $(document).ready(function(){
 
-    
-
-
-   
-   
-   
     var weatherAPI = "d6e8ffe90ebe474fa1ad37347201fc11"
     var cityArr = [];
 
@@ -34,23 +28,16 @@ $("#citySearch").on("click", function(event) {
     searchCitiesInTown(city);
     $("#imageCity").empty();
     $("#breweryList").empty();
-<<<<<<< HEAD
     
 })
 
 // // smooth scroll 
-    // const scroll = new SmoothScroll('#citySearch a[href*="#"]')
-// $('#citySearch').click(function() {
-// $.scrollTop(500);
-// })
+
 $("button").click(function() {
     $('html,body').animate({
         scrollTop: $(".second").offset().top},1250);
-}
-)
-=======
-
 })
+
 
 $("#state-input").keypress(function(event) {
     if (event.which == 13) {
@@ -64,7 +51,6 @@ $("#state-input").keypress(function(event) {
         .trim();
       var tomDescrip = "";
       var localDiv = $("#localDiv");
-      window.scrollTo(0, document.body.scrollHeight);
 
       if (event.which == 13) {
         localWeather(city, state, localDiv);
@@ -82,7 +68,6 @@ $("#state-input").keypress(function(event) {
 
 
 
->>>>>>> master
 
 
 // saving to local storage 

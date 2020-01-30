@@ -1,5 +1,4 @@
 /* section 1 style */
-<<<<<<< HEAD
 
 
 /* smooth scroll*/
@@ -17,19 +16,12 @@ body {
 } */
 
 html {
-
     overflow: smooth;
 }
 
 
 
-=======
-html {
-    scroll-behavior: smooth;
-   }
-
    
->>>>>>> master
 .mainTitle {
     color: white;
     font-stretch: expanded;
