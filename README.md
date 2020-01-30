@@ -30,6 +30,8 @@ Our site was created for a frequent traveler who enjoys learning and trying loca
 ## Presentation 
 
 Presentation: https://docs.google.com/presentation/d/1a9onFeRlSMJT4TShh-yef9lyB0RNzXJzbMJdEHWNHG4/edit?usp=sharing
+<br>
+<br>
 Site: https://derrickas.github.io/ProjectOne/
 
 
