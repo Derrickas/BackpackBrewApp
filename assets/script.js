@@ -21,6 +21,9 @@ $("#citySearch").on("click", function(event) {
     var localDiv = $("#localDiv")
     
 
+    $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top }, 500);
+    
+
     
     localWeather(city, state, localDiv)
     forecast(city, state)
@@ -31,6 +34,7 @@ $("#citySearch").on("click", function(event) {
     searchCitiesInTown(city);
     $("#imageCity").empty();
     $("#breweryList").empty();
+<<<<<<< HEAD
     
 })
 
@@ -44,6 +48,41 @@ $("button").click(function() {
         scrollTop: $(".second").offset().top},1250);
 }
 )
+=======
+
+})
+
+$("#state-input").keypress(function(event) {
+    if (event.which == 13) {
+      console.log("hi");
+      event.preventDefault();
+      var city = $("#city-input")
+        .val()
+        .trim();
+      var state = $("#state-input")
+        .val()
+        .trim();
+      var tomDescrip = "";
+      var localDiv = $("#localDiv");
+      window.scrollTo(0, document.body.scrollHeight);
+
+      if (event.which == 13) {
+        localWeather(city, state, localDiv);
+        forecast(city, state);
+        saveCitySearch(city);
+        $("#currentWeather").append(localDiv);
+        $("#currentWeather").append(tomDescrip);
+        breweries(city, state);
+        searchCitiesInTown(city);
+        $("#imageCity").empty();
+        $("#breweryList").empty();
+      }
+    }
+  });
+
+
+
+>>>>>>> master
 
 
 // saving to local storage 
