@@ -1,4 +1,27 @@
 /* section 1 style */
+
+
+/* smooth scroll*/
+/* .hero {
+
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    overflow-y: hidden;
+
+} */
+
+html {
+
+    overflow: smooth;
+}
+
+
+
 .mainTitle {
     color: white;
     font-stretch: expanded;
